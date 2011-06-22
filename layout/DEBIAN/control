@@ -1,0 +1,9 @@
+Package: com.legendcoders.customlock
+Name: custom lock
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: Infectionfx
+Author: Infectionfx
+Section: Tweaks

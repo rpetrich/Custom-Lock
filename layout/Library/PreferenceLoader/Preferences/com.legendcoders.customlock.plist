@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>entry</key>
+	<dict>
+		<key>cell</key>
+		<string>PSLinkCell</string>
+		<key>icon</key>
+		<string>Multi-Slide.png</string>
+		<key>label</key>
+		<string>Custom-Lock</string>
+	</dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>isStaticText</key>
+			<true/>
+			<key>label</key>
+			<string>Clock Settings:</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.legendcoders.customlock</string>
+			<key>key</key>
+			<string>clockEnable</string>
+			<key>label</key>
+			<string>Enable:</string>
+			<key>PostNotification</key>
+			<string>com.legendcoders.customlock/updated</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>defaults</key>
+			<string>com.legendcoders.customlock</string>
+			<key>key</key>
+			<string>timeLabelKey</string>
+			<key>label</key>
+			<string>Custom Text:</string>
+			<key>PostNotification</key>
+			<string>com.legendcoders.customlock/updated</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>defaults</key>
+			<string>com.legendcoders.customlock</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>key</key>
+			<string>timeLabelColorKey</string>
+			<key>label</key>
+			<string>Clock Color</string>
+			<key>PostNotification</key>
+			<string>com.legendcoders.customlock/updated</string>
+			<key>validTitles</key>
+			<array>
+				<string>Red</string>
+				<string>Blue</string>
+				<string>Green</string>
+				<string>Black</string>
+				<string>Purple</string>
+				<string>White</string>
+				<string>Orange</string>
+				
+			</array>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				
+			</array>
+		</dict>
+		
+		
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>isStaticText</key>
+			<true/>
+			<key>label</key>
+			<string>Subtitle Settings:</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.legendcoders.customlock</string>
+			<key>key</key>
+			<string>dateEnabled</string>
+			<key>label</key>
+			<string>Enable:</string>
+			<key>PostNotification</key>
+			<string>com.legendcoders.customlock/updated</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>defaults</key>
+			<string>com.legendcoders.customlock</string>
+			<key>key</key>
+			<string>dateLabelKey</string>
+			<key>label</key>
+			<string>Custom Text:</string>
+			<key>PostNotification</key>
+			<string>com.legendcoders.customlock/updated</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>defaults</key>
+			<string>com.legendcoders.customlock</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>key</key>
+			<string>dateLabelColorKey</string>
+			<key>label</key>
+			<string>Clock Color</string>
+			<key>PostNotification</key>
+			<string>com.legendcoders.customlock/updated</string>
+			<key>validTitles</key>
+			<array>
+				<string>Red</string>
+				<string>Blue</string>
+				<string>Green</string>
+				<string>Black</string>
+				<string>Purple</string>
+				<string>White</string>
+				<string>Orange</string>
+				
+			</array>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				
+			</array>
+		</dict>
+		
+		
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>Follow me on Twitter: http://twitter.com/InfectionFX for new tweaks! :)</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>Please support my Coffee addiction! You can PayPal donate to tylernettleton@gmail.com to support! :P</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>Custom-Lock</string>
+</dict>
+</plist>
