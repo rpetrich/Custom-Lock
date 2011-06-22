@@ -1,16 +1,39 @@
+#import <UIKit/UIKit.h>
+
 @interface TPLCDTextView : UIView { }
 -(void)setText:(id)text;
 -(void)setTextColor:(id)color;
--(id)grabPrefColor:(NSInteger)colorNumber;
 @end
 
-NSDictionary *prefrences;
-NSString *timeLabelText;
-NSInteger timeLabelColor;
-NSString *dateLabelText;
-NSInteger dateLabelColor;
-BOOL clockActive;
-BOOL dateActive;
+static NSString *timeLabelText;
+static NSInteger timeLabelColor;
+static NSString *dateLabelText;
+static NSInteger dateLabelColor;
+static BOOL clockActive;
+static BOOL dateActive;
+
+static UIColor *ColorForIndex(NSInteger colorNumber) {
+	switch (colorNumber) {
+		case 0:
+			return [UIColor redColor];
+		case 1:
+			return [UIColor blueColor];
+		case 2:
+			return [UIColor greenColor];
+		case 3:
+			return [UIColor blackColor];
+		case 4:
+			return [UIColor purpleColor];
+		case 5:
+			return [UIColor whiteColor];
+		case 6:
+			return [UIColor orangeColor];
+		default:
+			return nil;
+	}
+}
+
+
 
 %hook SBAwayDateView
 -(void)updateClock {
@@ -18,7 +41,7 @@ BOOL dateActive;
 	if(clockActive) {
 		TPLCDTextView *timeLabel = MSHookIvar<TPLCDTextView *>(self, "_timeLabel");
 		[timeLabel setText:timeLabelText];
-		[timeLabel setTextColor: [self grabPrefColor:timeLabelColor]];
+		[timeLabel setTextColor: ColorForIndex(timeLabelColor)];
 	}
 }
 
@@ -28,63 +51,28 @@ BOOL dateActive;
 	if(dateActive) {
 		TPLCDTextView *dateLabel = MSHookIvar<TPLCDTextView *>(self, "_titleLabel");
 		[dateLabel setText:dateLabelText];
-		[dateLabel setTextColor: [self grabPrefColor:dateLabelColor]];		
+		[dateLabel setTextColor: ColorForIndex(dateLabelColor)];		
 	}
 }
 
-
-%new(v@:i)
--(id)grabPrefColor:(NSInteger)colorNumber {
-	NSLog(@"Hello");
-	UIColor *returnColor;
-	switch (colorNumber) {
-		case 0:
-		returnColor = [UIColor redColor];
-		break;
-		case 1:
-		returnColor = [UIColor blueColor];
-		break;
-		case 2:
-		returnColor = [UIColor greenColor];
-		break;
-		case 3:
-		returnColor = [UIColor blackColor];
-		break;
-		case 4:
-	returnColor = [UIColor purpleColor];
-		break;
-		case 5:
-		returnColor = [UIColor whiteColor];
-		break;
-		case 6:
-		returnColor = [UIColor orangeColor];
-		break;
-		default:
-		break;
-	}
-	return (returnColor);
-	[returnColor release];
-}
 
 %end
 
 static void LoadSettings() { 
-	prefrences = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.legendcoders.customlock.plist"]; 
-	clockActive = (BOOL)[[prefrences objectForKey:@"clockEnable"] boolValue];
-	dateActive = (BOOL)[[prefrences objectForKey:@"dateEnabled"] boolValue];
-	timeLabelText = [[NSString alloc] initWithString:[prefrences objectForKey:@"timeLabelKey" ]];
-	timeLabelColor	= [((NSNumber*)[prefrences valueForKey:@"timeLabelColorKey"]) integerValue];
-	dateLabelText = [[NSString alloc] initWithString:[prefrences objectForKey:@"dateLabelKey"]];
-	dateLabelColor =  [((NSNumber*)[prefrences valueForKey:@"dateLabelColorKey"]) integerValue];
-	[prefrences release];
+	NSDictionary *prefrences = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/com.legendcoders.customlock.plist"];
+	clockActive = [[prefrences objectForKey:@"clockEnable"] boolValue];
+	dateActive = [[prefrences objectForKey:@"dateEnabled"] boolValue];
+	[timeLabelText release];
+	timeLabelText = [[prefrences objectForKey:@"timeLabelKey"] copy];
+	timeLabelColor	= [[prefrences valueForKey:@"timeLabelColorKey"] integerValue];
+	[dateLabelText release];
+	dateLabelText = [[prefrences objectForKey:@"dateLabelKey"] copy];
+	dateLabelColor =  [[prefrences valueForKey:@"dateLabelColorKey"] integerValue];
 }
 
 static void SettingsChanged(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
-	[timeLabelText release];
-	[dateLabelText release];
-	[prefrences release];
 	LoadSettings();
-	}
+}
 
 %ctor
 {

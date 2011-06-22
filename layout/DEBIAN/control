@@ -1,9 +1,9 @@
 Package: com.legendcoders.customlock
-Name: custom lock
-Depends: mobilesubstrate
+Name: Custom Lock
+Depends: mobilesubstrate, preferenceloader
 Version: 0.0.1
 Architecture: iphoneos-arm
-Description: An awesome MobileSubstrate tweak!
+Description: Customize lock screen text
 Maintainer: Infectionfx
 Author: Infectionfx
 Section: Tweaks
