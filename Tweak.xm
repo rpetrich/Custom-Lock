@@ -36,7 +36,7 @@ BOOL dateActive;
 %new(v@:i)
 -(id)grabPrefColor:(NSInteger)colorNumber {
 	NSLog(@"Hello");
-	UIColor *returnColor = [UIColor alloc];
+	UIColor *returnColor;
 	switch (colorNumber) {
 		case 0:
 		returnColor = [UIColor redColor];
@@ -82,6 +82,7 @@ static void LoadSettings() {
 static void SettingsChanged(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
 	[timeLabelText release];
 	[dateLabelText release];
+	[prefrences release];
 	LoadSettings();
 	}
 
